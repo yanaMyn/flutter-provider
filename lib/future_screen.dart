@@ -16,15 +16,10 @@ class FutureScreen extends StatelessWidget {
         create: (context) => Future.delayed(const Duration(seconds: 4), () => "halloow"),
         initialData: "Loading",
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Consumer<String>(
-                builder: (context, value, child) {
-                  return Text(value,);
-                }
-              ),
-            ],
+          child: Consumer<String>(
+            builder: (context, value, child) {
+              return Text(value,);
+            }
           ),
         ),
       ),

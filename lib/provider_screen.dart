@@ -8,7 +8,8 @@ class ProviderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainModel model = Provider.of<MainModel>(context, listen: true);
+    MainModel model = context.watch<MainModel>();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
