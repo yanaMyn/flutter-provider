@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:state_management_provider/future/future_screen.dart';
 import 'package:state_management_provider/provider/main_provider.dart';
 import 'package:state_management_provider/stream_builder/stream_builder_screen.dart';
+import 'package:state_management_provider/stream_provider/main_stream_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,15 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
       content = const FutureScreen();
     }
 
+    if (_selectedPageIndex == 3) {
+      content = const MainStreamProviderScreen();
+    }
+
     return Scaffold(
       body: content,
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedPageIndex,
         onTap: (value) => _selectPage(value),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "provider"),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Main Stream Provider"),
         ],
       ),
     );
