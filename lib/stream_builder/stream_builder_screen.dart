@@ -11,11 +11,12 @@ class StreamBuilderScreen extends StatelessWidget {
     yield 2;
 
     await Future.delayed(const Duration(seconds: 2));
-    yield 3;
+    yield "any";
   }
 
   @override
   Widget build(BuildContext context) {
+    print("StreamBuilderScreen");
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,

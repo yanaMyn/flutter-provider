@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_provider/main_model.dart';
-import 'package:state_management_provider/second_counter.dart';
+import 'package:state_management_provider/change_notifier/main_model.dart';
+import 'package:state_management_provider/change_notifier/second_counter.dart';
 
 class ProviderScreen extends StatelessWidget {
   const ProviderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print("ProviderScreen");
     MainModel model = context.watch<MainModel>();
 
     return Scaffold(

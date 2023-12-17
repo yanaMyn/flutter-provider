@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:state_management_provider/future_screen.dart';
-import 'package:state_management_provider/main_model.dart';
-import 'package:state_management_provider/provider_screen.dart';
-import 'package:state_management_provider/stream_builder_screen.dart';
+import 'package:state_management_provider/future/future_screen.dart';
+import 'package:state_management_provider/provider/main_provider.dart';
+import 'package:state_management_provider/stream_builder/stream_builder_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => MainModel(),
-      child: MaterialApp(
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const MyHomePage(),
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const MyHomePage(),
     );
   }
 }
@@ -45,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = const ProviderScreen();
+    Widget content = const MainProviderScreen();
     
     if (_selectedPageIndex == 1) {
       content = const StreamBuilderScreen();
@@ -55,18 +50,16 @@ class _MyHomePageState extends State<MyHomePage> {
       content = const FutureScreen();
     }
 
-    return Consumer<MainModel>(
-      builder: (context, model, child) => Scaffold(
-        body: content,
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedPageIndex,
-          onTap: (value) => _selectPage(value),
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.star), label: "provider"),
-            BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
-            BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
-          ],
-        ),
+    return Scaffold(
+      body: content,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedPageIndex,
+        onTap: (value) => _selectPage(value),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "provider"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_provider/main_model.dart';
+import 'package:state_management_provider/change_notifier/main_model.dart';
 
 class SecondCounter extends StatefulWidget {
   const SecondCounter({super.key, required this.title});
