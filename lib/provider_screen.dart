@@ -42,6 +42,11 @@ class ProviderScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => model.counter++,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ),
     );
   }
 }

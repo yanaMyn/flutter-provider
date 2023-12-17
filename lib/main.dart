@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:state_management_provider/future_screen.dart';
 import 'package:state_management_provider/main_model.dart';
 import 'package:state_management_provider/provider_screen.dart';
+import 'package:state_management_provider/stream_builder_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,6 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => MainModel(),
       child: MaterialApp(
-        title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
@@ -46,7 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Widget content = const ProviderScreen();
+    
     if (_selectedPageIndex == 1) {
+      content = const StreamBuilderScreen();
+    }
+
+    if (_selectedPageIndex == 2) {
       content = const FutureScreen();
     }
 
@@ -58,14 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
           onTap: (value) => _selectPage(value),
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.star), label: "provider"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.star), label: "Future Provider"),
+            BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
+            BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => model.counter++,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
         ),
       ),
     );
