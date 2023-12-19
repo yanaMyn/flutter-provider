@@ -29,7 +29,6 @@ class MainProviderScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_management_provider/future/future_screen.dart';
+import 'package:state_management_provider/multiprovider/main_multiprovider.dart';
 import 'package:state_management_provider/provider/main_provider.dart';
 import 'package:state_management_provider/stream_builder/stream_builder_screen.dart';
 import 'package:state_management_provider/stream_provider/main_stream_provider.dart';
@@ -55,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
       content = const MainStreamProviderScreen();
     }
 
+    if (_selectedPageIndex == 4) {
+      content = const MainMultiProvider();
+    }
+
     return Scaffold(
       body: content,
       bottomNavigationBar: BottomNavigationBar(
@@ -66,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "Main Stream Provider"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Main Multi Provider"),
         ],
       ),
     );
