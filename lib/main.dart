@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:state_management_provider/future/future_screen.dart';
 import 'package:state_management_provider/multiprovider/main_multiprovider.dart';
 import 'package:state_management_provider/provider/main_provider.dart';
+import 'package:state_management_provider/proxy_provider/main_proxy_provider.dart';
 import 'package:state_management_provider/stream_builder/stream_builder_screen.dart';
 import 'package:state_management_provider/stream_provider/main_stream_provider.dart';
 
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = const MainProviderScreen();
+    Widget content = MainProviderScreen();
     
     if (_selectedPageIndex == 1) {
       content = const StreamBuilderScreen();
@@ -60,6 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
       content = const MainMultiProvider();
     }
 
+    if (_selectedPageIndex == 5) {
+      content = const MainProxyProvider();
+    }
+
     return Scaffold(
       body: content,
       bottomNavigationBar: BottomNavigationBar(
@@ -68,10 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: (value) => _selectPage(value),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.star), label: "provider"),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream Builder"),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future Provider"),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Main Stream Provider"),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Main Multi Provider"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Builder"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Future"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Stream"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Multi"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Proxy"),
         ],
       ),
     );
